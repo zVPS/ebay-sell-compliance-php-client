@@ -1,11 +1,11 @@
 <?php
 /**
- * CorrectiveRecommendations
+ * VariationDetails
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Compliance\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Compliance\ObjectSerializer;
 
 /**
- * CorrectiveRecommendations Class Doc Comment
+ * VariationDetails Class Doc Comment
  *
  * @category Class
- * @description This type is used by the &lt;strong&gt;correctiveRecommendations&lt;/strong&gt; container, which is returned if eBay has suggestions for how to correct the given violation.
- * @package  Ebay\Sell
+ * @description This type is used to identify the product variation that has the listing violation.
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSerializable
+class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CorrectiveRecommendations';
+    protected static $openAPIModelName = 'VariationDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,8 @@ class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'product_recommendation' => '\Ebay\Sell\Compliance\Model\ProductRecommendation',
-        'aspect_recommendations' => '\Ebay\Sell\Compliance\Model\AspectRecommendations[]'
+        'sku' => 'string',
+        'variation_aspects' => '\Ebay\Sell\Compliance\Model\NameValueList[]'
     ];
 
     /**
@@ -72,8 +72,8 @@ class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'product_recommendation' => null,
-        'aspect_recommendations' => null
+        'sku' => null,
+        'variation_aspects' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'product_recommendation' => 'productRecommendation',
-        'aspect_recommendations' => 'aspectRecommendations'
+        'sku' => 'sku',
+        'variation_aspects' => 'variationAspects'
     ];
 
     /**
@@ -113,8 +113,8 @@ class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'product_recommendation' => 'setProductRecommendation',
-        'aspect_recommendations' => 'setAspectRecommendations'
+        'sku' => 'setSku',
+        'variation_aspects' => 'setVariationAspects'
     ];
 
     /**
@@ -123,8 +123,8 @@ class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'product_recommendation' => 'getProductRecommendation',
-        'aspect_recommendations' => 'getAspectRecommendations'
+        'sku' => 'getSku',
+        'variation_aspects' => 'getVariationAspects'
     ];
 
     /**
@@ -184,8 +184,8 @@ class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['product_recommendation'] = isset($data['product_recommendation']) ? $data['product_recommendation'] : null;
-        $this->container['aspect_recommendations'] = isset($data['aspect_recommendations']) ? $data['aspect_recommendations'] : null;
+        $this->container['sku'] = $data['sku'] ?? null;
+        $this->container['variation_aspects'] = $data['variation_aspects'] ?? null;
     }
 
     /**
@@ -213,49 +213,49 @@ class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets product_recommendation
+     * Gets sku
      *
-     * @return \Ebay\Sell\Compliance\Model\ProductRecommendation|null
+     * @return string|null
      */
-    public function getProductRecommendation()
+    public function getSku()
     {
-        return $this->container['product_recommendation'];
+        return $this->container['sku'];
     }
 
     /**
-     * Sets product_recommendation
+     * Sets sku
      *
-     * @param \Ebay\Sell\Compliance\Model\ProductRecommendation|null $product_recommendation product_recommendation
+     * @param string|null $sku The seller-defined SKU value of the variation within the multiple-variation listing with the violation{s). This field is only returned if a seller-defined SKU value is defined for the variation. SKU values are optional in listing except when creating listings using the Inventory API.
      *
      * @return self
      */
-    public function setProductRecommendation($product_recommendation)
+    public function setSku($sku)
     {
-        $this->container['product_recommendation'] = $product_recommendation;
+        $this->container['sku'] = $sku;
 
         return $this;
     }
 
     /**
-     * Gets aspect_recommendations
+     * Gets variation_aspects
      *
-     * @return \Ebay\Sell\Compliance\Model\AspectRecommendations[]|null
+     * @return \Ebay\Sell\Compliance\Model\NameValueList[]|null
      */
-    public function getAspectRecommendations()
+    public function getVariationAspects()
     {
-        return $this->container['aspect_recommendations'];
+        return $this->container['variation_aspects'];
     }
 
     /**
-     * Sets aspect_recommendations
+     * Sets variation_aspects
      *
-     * @param \Ebay\Sell\Compliance\Model\AspectRecommendations[]|null $aspect_recommendations This container is returned for ASPECTS_ADOPTION violations if eBay has found one or more item aspect name-value pairs that may be appropriate for the seller's product. In many cases, the missing or invalid item aspect(s) shown under the corresponding violationData array, will also show up under this array with suggested value(s).
+     * @param \Ebay\Sell\Compliance\Model\NameValueList[]|null $variation_aspects An array of one or more variation aspects that define a variation within a multiple-variation listing. The aspect{s) returned here define the individual variation, because these aspects will differ for each variation. Common varying aspects include color and size.
      *
      * @return self
      */
-    public function setAspectRecommendations($aspect_recommendations)
+    public function setVariationAspects($variation_aspects)
     {
-        $this->container['aspect_recommendations'] = $aspect_recommendations;
+        $this->container['variation_aspects'] = $variation_aspects;
 
         return $this;
     }
@@ -280,7 +280,7 @@ class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,14 +29,14 @@
 namespace Ebay\Sell\Compliance\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Compliance\ObjectSerializer;
 
 /**
  * PagedComplianceViolationCollection Class Doc Comment
  *
  * @category Class
  * @description This type is the base response type of the &lt;strong&gt;getListingViolations&lt;/strong&gt; method.
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
@@ -45,7 +45,7 @@ use \Ebay\Sell\ObjectSerializer;
  */
 class PagedComplianceViolationCollection implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -209,13 +209,13 @@ class PagedComplianceViolationCollection implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['offset'] = isset($data['offset']) ? $data['offset'] : null;
-        $this->container['href'] = isset($data['href']) ? $data['href'] : null;
-        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
-        $this->container['next'] = isset($data['next']) ? $data['next'] : null;
-        $this->container['prev'] = isset($data['prev']) ? $data['prev'] : null;
-        $this->container['limit'] = isset($data['limit']) ? $data['limit'] : null;
-        $this->container['listing_violations'] = isset($data['listing_violations']) ? $data['listing_violations'] : null;
+        $this->container['offset'] = $data['offset'] ?? null;
+        $this->container['href'] = $data['href'] ?? null;
+        $this->container['total'] = $data['total'] ?? null;
+        $this->container['next'] = $data['next'] ?? null;
+        $this->container['prev'] = $data['prev'] ?? null;
+        $this->container['limit'] = $data['limit'] ?? null;
+        $this->container['listing_violations'] = $data['listing_violations'] ?? null;
     }
 
     /**
@@ -430,7 +430,7 @@ class PagedComplianceViolationCollection implements ModelInterface, ArrayAccess,
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

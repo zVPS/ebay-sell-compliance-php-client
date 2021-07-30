@@ -1,11 +1,11 @@
 <?php
 /**
- * VariationDetails
+ * CorrectiveRecommendations
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Compliance\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Compliance\ObjectSerializer;
 
 /**
- * VariationDetails Class Doc Comment
+ * CorrectiveRecommendations Class Doc Comment
  *
  * @category Class
- * @description This type is used to identify the product variation that has the listing violation.
- * @package  Ebay\Sell
+ * @description This type is used by the &lt;strong&gt;correctiveRecommendations&lt;/strong&gt; container, which is returned if eBay has suggestions for how to correct the given violation.
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
+class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'VariationDetails';
+    protected static $openAPIModelName = 'CorrectiveRecommendations';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,8 @@ class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sku' => 'string',
-        'variation_aspects' => '\Ebay\Sell\Compliance\Model\NameValueList[]'
+        'product_recommendation' => '\Ebay\Sell\Compliance\Model\ProductRecommendation',
+        'aspect_recommendations' => '\Ebay\Sell\Compliance\Model\AspectRecommendations[]'
     ];
 
     /**
@@ -72,8 +72,8 @@ class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sku' => null,
-        'variation_aspects' => null
+        'product_recommendation' => null,
+        'aspect_recommendations' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'sku' => 'sku',
-        'variation_aspects' => 'variationAspects'
+        'product_recommendation' => 'productRecommendation',
+        'aspect_recommendations' => 'aspectRecommendations'
     ];
 
     /**
@@ -113,8 +113,8 @@ class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'sku' => 'setSku',
-        'variation_aspects' => 'setVariationAspects'
+        'product_recommendation' => 'setProductRecommendation',
+        'aspect_recommendations' => 'setAspectRecommendations'
     ];
 
     /**
@@ -123,8 +123,8 @@ class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'sku' => 'getSku',
-        'variation_aspects' => 'getVariationAspects'
+        'product_recommendation' => 'getProductRecommendation',
+        'aspect_recommendations' => 'getAspectRecommendations'
     ];
 
     /**
@@ -184,8 +184,8 @@ class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['sku'] = isset($data['sku']) ? $data['sku'] : null;
-        $this->container['variation_aspects'] = isset($data['variation_aspects']) ? $data['variation_aspects'] : null;
+        $this->container['product_recommendation'] = $data['product_recommendation'] ?? null;
+        $this->container['aspect_recommendations'] = $data['aspect_recommendations'] ?? null;
     }
 
     /**
@@ -213,49 +213,49 @@ class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets sku
+     * Gets product_recommendation
      *
-     * @return string|null
+     * @return \Ebay\Sell\Compliance\Model\ProductRecommendation|null
      */
-    public function getSku()
+    public function getProductRecommendation()
     {
-        return $this->container['sku'];
+        return $this->container['product_recommendation'];
     }
 
     /**
-     * Sets sku
+     * Sets product_recommendation
      *
-     * @param string|null $sku The seller-defined SKU value of the variation within the multiple-variation listing with the violation{s). This field is only returned if a seller-defined SKU value is defined for the variation. SKU values are optional in listing except when creating listings using the Inventory API.
+     * @param \Ebay\Sell\Compliance\Model\ProductRecommendation|null $product_recommendation product_recommendation
      *
      * @return self
      */
-    public function setSku($sku)
+    public function setProductRecommendation($product_recommendation)
     {
-        $this->container['sku'] = $sku;
+        $this->container['product_recommendation'] = $product_recommendation;
 
         return $this;
     }
 
     /**
-     * Gets variation_aspects
+     * Gets aspect_recommendations
      *
-     * @return \Ebay\Sell\Compliance\Model\NameValueList[]|null
+     * @return \Ebay\Sell\Compliance\Model\AspectRecommendations[]|null
      */
-    public function getVariationAspects()
+    public function getAspectRecommendations()
     {
-        return $this->container['variation_aspects'];
+        return $this->container['aspect_recommendations'];
     }
 
     /**
-     * Sets variation_aspects
+     * Sets aspect_recommendations
      *
-     * @param \Ebay\Sell\Compliance\Model\NameValueList[]|null $variation_aspects An array of one or more variation aspects that define a variation within a multiple-variation listing. The aspect{s) returned here define the individual variation, because these aspects will differ for each variation. Common varying aspects include color and size.
+     * @param \Ebay\Sell\Compliance\Model\AspectRecommendations[]|null $aspect_recommendations This container is returned for ASPECTS_ADOPTION violations if eBay has found one or more item aspect name-value pairs that may be appropriate for the seller's product. In many cases, the missing or invalid item aspect(s) shown under the corresponding violationData array, will also show up under this array with suggested value(s).
      *
      * @return self
      */
-    public function setVariationAspects($variation_aspects)
+    public function setAspectRecommendations($aspect_recommendations)
     {
-        $this->container['variation_aspects'] = $variation_aspects;
+        $this->container['aspect_recommendations'] = $aspect_recommendations;
 
         return $this;
     }
@@ -280,7 +280,7 @@ class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

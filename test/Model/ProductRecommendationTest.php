@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Compliance\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description This type is used by the &lt;strong&gt;productRecommendation&lt;/strong&gt; container, which is returned if eBay has found an eBay catalog product that may be a match for the product (or product variation) that has a listing violation.&lt;br&gt;&lt;br&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; eBay catalog product adoption is not enforced at this time, so product adoption violations are no longer returned. Due to this fact, this type and &lt;strong&gt;productRecommendation&lt;/strong&gt; container are not currently applicable. &lt;/span&gt;
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Compliance
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

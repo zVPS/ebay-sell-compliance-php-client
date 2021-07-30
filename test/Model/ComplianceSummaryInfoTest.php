@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Compliance\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description This type is used by each unique eBay marketplace and compliance type combination that is returned in the &lt;strong&gt;getListingViolationsSummary&lt;/strong&gt; response to indicate the total number of listing violations in regards to that eBay marketplace and compliance type.
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Compliance
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

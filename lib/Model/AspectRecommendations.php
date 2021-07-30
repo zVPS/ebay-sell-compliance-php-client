@@ -1,11 +1,11 @@
 <?php
 /**
- * ProductRecommendation
+ * AspectRecommendations
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Compliance\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Compliance\ObjectSerializer;
 
 /**
- * ProductRecommendation Class Doc Comment
+ * AspectRecommendations Class Doc Comment
  *
  * @category Class
- * @description This type is used by the &lt;strong&gt;productRecommendation&lt;/strong&gt; container, which is returned if eBay has found an eBay catalog product that may be a match for the product (or product variation) that has a listing violation.&lt;br&gt;&lt;br&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; eBay catalog product adoption is not enforced at this time, so product adoption violations are no longer returned. Due to this fact, this type and &lt;strong&gt;productRecommendation&lt;/strong&gt; container are not currently applicable. &lt;/span&gt;
- * @package  Ebay\Sell
+ * @description This type is used by the &lt;strong&gt;aspectsRecommendation&lt;/strong&gt; container, which is returned if eBay has found a listing with missing or invalid item aspects (&lt;code&gt;ASPECTS_ADOPTION&lt;/code&gt; compliance type).
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSerializable
+class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProductRecommendation';
+    protected static $openAPIModelName = 'AspectRecommendations';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,8 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'epid' => 'string'
+        'localized_aspect_name' => 'string',
+        'suggested_values' => 'string[]'
     ];
 
     /**
@@ -71,7 +72,8 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'epid' => null
+        'localized_aspect_name' => null,
+        'suggested_values' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'epid' => 'epid'
+        'localized_aspect_name' => 'localizedAspectName',
+        'suggested_values' => 'suggestedValues'
     ];
 
     /**
@@ -110,7 +113,8 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'epid' => 'setEpid'
+        'localized_aspect_name' => 'setLocalizedAspectName',
+        'suggested_values' => 'setSuggestedValues'
     ];
 
     /**
@@ -119,7 +123,8 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'epid' => 'getEpid'
+        'localized_aspect_name' => 'getLocalizedAspectName',
+        'suggested_values' => 'getSuggestedValues'
     ];
 
     /**
@@ -179,7 +184,8 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['epid'] = isset($data['epid']) ? $data['epid'] : null;
+        $this->container['localized_aspect_name'] = $data['localized_aspect_name'] ?? null;
+        $this->container['suggested_values'] = $data['suggested_values'] ?? null;
     }
 
     /**
@@ -207,25 +213,49 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets epid
+     * Gets localized_aspect_name
      *
      * @return string|null
      */
-    public function getEpid()
+    public function getLocalizedAspectName()
     {
-        return $this->container['epid'];
+        return $this->container['localized_aspect_name'];
     }
 
     /**
-     * Sets epid
+     * Sets localized_aspect_name
      *
-     * @param string|null $epid This field will return the eBay Product ID {ePID) of an eBay Catalog product that eBay recommends that the seller use to make their listing compliant. Note: Product Adoption is not enforced at this time. Product Adoption violations are no longer returned.
+     * @param string|null $localized_aspect_name The name of the item aspect for which eBay has a recommendation. In many cases, the same item aspect(s) that are returned under the violationData array for ASPECTS_ADOPTION listing violations are also returned here Note: This name is always localized for the specified marketplace.
      *
      * @return self
      */
-    public function setEpid($epid)
+    public function setLocalizedAspectName($localized_aspect_name)
     {
-        $this->container['epid'] = $epid;
+        $this->container['localized_aspect_name'] = $localized_aspect_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets suggested_values
+     *
+     * @return string[]|null
+     */
+    public function getSuggestedValues()
+    {
+        return $this->container['suggested_values'];
+    }
+
+    /**
+     * Sets suggested_values
+     *
+     * @param string[]|null $suggested_values One or more valid values for the corresponding item aspect (in localizedAspectName) are returned here. These suggested values for the item aspect depend on the listing category and on the information specified in the listing. Sellers should confirm accuracy of the values before applying them to the listing. Please use getItemAspectsForCategory in the Taxonomy API or GetCategorySpecifics in the Trading API to get a comprehensive list of required and recommended aspects for a given category and a list of supported aspect values for each.
+     *
+     * @return self
+     */
+    public function setSuggestedValues($suggested_values)
+    {
+        $this->container['suggested_values'] = $suggested_values;
 
         return $this;
     }
@@ -250,7 +280,7 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

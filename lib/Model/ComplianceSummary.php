@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,14 +29,14 @@
 namespace Ebay\Sell\Compliance\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Compliance\ObjectSerializer;
 
 /**
  * ComplianceSummary Class Doc Comment
  *
  * @category Class
  * @description This type is the base type for the &lt;strong&gt;getListingViolationsSummary&lt;/strong&gt; response. The &lt;strong&gt;violationSummaries&lt;/strong&gt; container contains an array of policy violation counts for each unique eBay marketplace and compliance type violation.
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
@@ -45,7 +45,7 @@ use \Ebay\Sell\ObjectSerializer;
  */
 class ComplianceSummary implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -179,7 +179,7 @@ class ComplianceSummary implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['violation_summaries'] = isset($data['violation_summaries']) ? $data['violation_summaries'] : null;
+        $this->container['violation_summaries'] = $data['violation_summaries'] ?? null;
     }
 
     /**
@@ -250,7 +250,7 @@ class ComplianceSummary implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

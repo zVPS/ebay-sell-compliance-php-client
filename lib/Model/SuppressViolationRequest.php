@@ -1,11 +1,11 @@
 <?php
 /**
- * AspectRecommendations
+ * SuppressViolationRequest
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Compliance\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Compliance\ObjectSerializer;
 
 /**
- * AspectRecommendations Class Doc Comment
+ * SuppressViolationRequest Class Doc Comment
  *
  * @category Class
- * @description This type is used by the &lt;strong&gt;aspectsRecommendation&lt;/strong&gt; container, which is returned if eBay has found a listing with missing or invalid item aspects (&lt;code&gt;ASPECTS_ADOPTION&lt;/code&gt; compliance type).
- * @package  Ebay\Sell
+ * @description This is the base request type of the &lt;strong&gt;suppressViolation&lt;/strong&gt; method, and is used to identify the listing violation that the seller wishes to suppress.
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSerializable
+class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AspectRecommendations';
+    protected static $openAPIModelName = 'SuppressViolationRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,8 @@ class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'localized_aspect_name' => 'string',
-        'suggested_values' => 'string[]'
+        'compliance_type' => 'string',
+        'listing_id' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'localized_aspect_name' => null,
-        'suggested_values' => null
+        'compliance_type' => null,
+        'listing_id' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'localized_aspect_name' => 'localizedAspectName',
-        'suggested_values' => 'suggestedValues'
+        'compliance_type' => 'complianceType',
+        'listing_id' => 'listingId'
     ];
 
     /**
@@ -113,8 +113,8 @@ class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'localized_aspect_name' => 'setLocalizedAspectName',
-        'suggested_values' => 'setSuggestedValues'
+        'compliance_type' => 'setComplianceType',
+        'listing_id' => 'setListingId'
     ];
 
     /**
@@ -123,8 +123,8 @@ class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'localized_aspect_name' => 'getLocalizedAspectName',
-        'suggested_values' => 'getSuggestedValues'
+        'compliance_type' => 'getComplianceType',
+        'listing_id' => 'getListingId'
     ];
 
     /**
@@ -184,8 +184,8 @@ class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['localized_aspect_name'] = isset($data['localized_aspect_name']) ? $data['localized_aspect_name'] : null;
-        $this->container['suggested_values'] = isset($data['suggested_values']) ? $data['suggested_values'] : null;
+        $this->container['compliance_type'] = $data['compliance_type'] ?? null;
+        $this->container['listing_id'] = $data['listing_id'] ?? null;
     }
 
     /**
@@ -213,49 +213,49 @@ class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets localized_aspect_name
+     * Gets compliance_type
      *
      * @return string|null
      */
-    public function getLocalizedAspectName()
+    public function getComplianceType()
     {
-        return $this->container['localized_aspect_name'];
+        return $this->container['compliance_type'];
     }
 
     /**
-     * Sets localized_aspect_name
+     * Sets compliance_type
      *
-     * @param string|null $localized_aspect_name The name of the item aspect for which eBay has a recommendation. In many cases, the same item aspect(s) that are returned under the violationData array for ASPECTS_ADOPTION listing violations are also returned here Note: This name is always localized for the specified marketplace.
+     * @param string|null $compliance_type The compliance type of the listing violation to suppress is specified in this field. The compliance type for each listing violation is found in the complianceType field under the listingViolations array in a getListingViolations response. Note: At this time, the suppressViolation method is only used to suppress aspect adoption listing violations in the 'at-risk' state, so ASPECTS_ADOPTION is currently the only supported value for this field. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/compliance/types/com:ComplianceTypeEnum'>eBay API documentation</a>
      *
      * @return self
      */
-    public function setLocalizedAspectName($localized_aspect_name)
+    public function setComplianceType($compliance_type)
     {
-        $this->container['localized_aspect_name'] = $localized_aspect_name;
+        $this->container['compliance_type'] = $compliance_type;
 
         return $this;
     }
 
     /**
-     * Gets suggested_values
+     * Gets listing_id
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getSuggestedValues()
+    public function getListingId()
     {
-        return $this->container['suggested_values'];
+        return $this->container['listing_id'];
     }
 
     /**
-     * Sets suggested_values
+     * Sets listing_id
      *
-     * @param string[]|null $suggested_values One or more valid values for the corresponding item aspect (in localizedAspectName) are returned here. These suggested values for the item aspect depend on the listing category and on the information specified in the listing. Sellers should confirm accuracy of the values before applying them to the listing. Please use getItemAspectsForCategory in the Taxonomy API or GetCategorySpecifics in the Trading API to get a comprehensive list of required and recommended aspects for a given category and a list of supported aspect values for each.
+     * @param string|null $listing_id The unique identifier of the listing with the violation(s) is specified in this field. The unique identifier of the listing with the listing violation(s) is found in the listingId field under the listingViolations array in a getListingViolations response. Note: At this time, the suppressViolation method is only used to suppress aspect adoption listing violations in the 'at-risk' state, so the listing specified in this field should be a listing with an ASPECTS_ADOPTION violation in the 'at-risk' state.
      *
      * @return self
      */
-    public function setSuggestedValues($suggested_values)
+    public function setListingId($listing_id)
     {
-        $this->container['suggested_values'] = $suggested_values;
+        $this->container['listing_id'] = $listing_id;
 
         return $this;
     }
@@ -280,7 +280,7 @@ class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 /**
- * ComplianceSummaryInfo
+ * NameValueList
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Compliance\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Compliance\ObjectSerializer;
 
 /**
- * ComplianceSummaryInfo Class Doc Comment
+ * NameValueList Class Doc Comment
  *
  * @category Class
- * @description This type is used by each unique eBay marketplace and compliance type combination that is returned in the &lt;strong&gt;getListingViolationsSummary&lt;/strong&gt; response to indicate the total number of listing violations in regards to that eBay marketplace and compliance type.
- * @package  Ebay\Sell
+ * @description This type is used to provide a name-value pair, including the identifying aspects of a product variation through the &lt;strong&gt;variationAspects&lt;/strong&gt; container.
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ComplianceSummaryInfo implements ModelInterface, ArrayAccess, \JsonSerializable
+class NameValueList implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ComplianceSummaryInfo';
+    protected static $openAPIModelName = 'NameValueList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,8 @@ class ComplianceSummaryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'compliance_type' => 'string',
-        'marketplace_id' => 'string',
-        'listing_count' => 'int'
+        'name' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -73,9 +72,8 @@ class ComplianceSummaryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'compliance_type' => null,
-        'marketplace_id' => null,
-        'listing_count' => null
+        'name' => null,
+        'value' => null
     ];
 
     /**
@@ -105,9 +103,8 @@ class ComplianceSummaryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'compliance_type' => 'complianceType',
-        'marketplace_id' => 'marketplaceId',
-        'listing_count' => 'listingCount'
+        'name' => 'name',
+        'value' => 'value'
     ];
 
     /**
@@ -116,9 +113,8 @@ class ComplianceSummaryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'compliance_type' => 'setComplianceType',
-        'marketplace_id' => 'setMarketplaceId',
-        'listing_count' => 'setListingCount'
+        'name' => 'setName',
+        'value' => 'setValue'
     ];
 
     /**
@@ -127,9 +123,8 @@ class ComplianceSummaryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'compliance_type' => 'getComplianceType',
-        'marketplace_id' => 'getMarketplaceId',
-        'listing_count' => 'getListingCount'
+        'name' => 'getName',
+        'value' => 'getValue'
     ];
 
     /**
@@ -189,9 +184,8 @@ class ComplianceSummaryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['compliance_type'] = isset($data['compliance_type']) ? $data['compliance_type'] : null;
-        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
-        $this->container['listing_count'] = isset($data['listing_count']) ? $data['listing_count'] : null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -219,73 +213,49 @@ class ComplianceSummaryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets compliance_type
+     * Gets name
      *
      * @return string|null
      */
-    public function getComplianceType()
+    public function getName()
     {
-        return $this->container['compliance_type'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets compliance_type
+     * Sets name
      *
-     * @param string|null $compliance_type This enumeration value indicates the type of compliance. See ComplianceTypeEnum for more information on each compliance type. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/compliance/types/com:ComplianceTypeEnum'>eBay API documentation</a>
+     * @param string|null $name This is the name of the variation aspect, or the name of the category of information that is returned through the name-value pair. The type of information that appears here will vary based on the compliance type and type of violation.
      *
      * @return self
      */
-    public function setComplianceType($compliance_type)
+    public function setName($name)
     {
-        $this->container['compliance_type'] = $compliance_type;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets marketplace_id
+     * Gets value
      *
      * @return string|null
      */
-    public function getMarketplaceId()
+    public function getValue()
     {
-        return $this->container['marketplace_id'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets marketplace_id
+     * Sets value
      *
-     * @param string|null $marketplace_id This enumeration value indicates the eBay marketplace where the listing violations exist. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/compliance/types/bas:MarketplaceIdEnum'>eBay API documentation</a>
+     * @param string|null $value This is the value of the variation aspect (in name field), or the value of the category of information that is returned through the name-value pair. The type of information that appears here will vary based on the compliance type and type of violation.
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id)
+    public function setValue($value)
     {
-        $this->container['marketplace_id'] = $marketplace_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets listing_count
-     *
-     * @return int|null
-     */
-    public function getListingCount()
-    {
-        return $this->container['listing_count'];
-    }
-
-    /**
-     * Sets listing_count
-     *
-     * @param int|null $listing_count This integer value indicates the number of eBay listings that are currently violating the compliance type indicated in the complianceType field, for the eBay marketplace indicated in the marketplaceId field.
-     *
-     * @return self
-     */
-    public function setListingCount($listing_count)
-    {
-        $this->container['listing_count'] = $listing_count;
+        $this->container['value'] = $value;
 
         return $this;
     }
@@ -310,7 +280,7 @@ class ComplianceSummaryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

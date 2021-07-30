@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Compliance\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description This is the base request type of the &lt;strong&gt;suppressViolation&lt;/strong&gt; method, and is used to identify the listing violation that the seller wishes to suppress.
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Compliance
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

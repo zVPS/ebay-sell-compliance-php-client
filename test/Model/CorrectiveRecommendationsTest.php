@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Compliance\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description This type is used by the &lt;strong&gt;correctiveRecommendations&lt;/strong&gt; container, which is returned if eBay has suggestions for how to correct the given violation.
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Compliance
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

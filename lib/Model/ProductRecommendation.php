@@ -1,11 +1,11 @@
 <?php
 /**
- * SuppressViolationRequest
+ * ProductRecommendation
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Compliance\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Compliance\ObjectSerializer;
 
 /**
- * SuppressViolationRequest Class Doc Comment
+ * ProductRecommendation Class Doc Comment
  *
  * @category Class
- * @description This is the base request type of the &lt;strong&gt;suppressViolation&lt;/strong&gt; method, and is used to identify the listing violation that the seller wishes to suppress.
- * @package  Ebay\Sell
+ * @description This type is used by the &lt;strong&gt;productRecommendation&lt;/strong&gt; container, which is returned if eBay has found an eBay catalog product that may be a match for the product (or product variation) that has a listing violation.&lt;br&gt;&lt;br&gt;&lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; eBay catalog product adoption is not enforced at this time, so product adoption violations are no longer returned. Due to this fact, this type and &lt;strong&gt;productRecommendation&lt;/strong&gt; container are not currently applicable. &lt;/span&gt;
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SuppressViolationRequest';
+    protected static $openAPIModelName = 'ProductRecommendation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,7 @@ class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'compliance_type' => 'string',
-        'listing_id' => 'string'
+        'epid' => 'string'
     ];
 
     /**
@@ -72,8 +71,7 @@ class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'compliance_type' => null,
-        'listing_id' => null
+        'epid' => null
     ];
 
     /**
@@ -103,8 +101,7 @@ class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'compliance_type' => 'complianceType',
-        'listing_id' => 'listingId'
+        'epid' => 'epid'
     ];
 
     /**
@@ -113,8 +110,7 @@ class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'compliance_type' => 'setComplianceType',
-        'listing_id' => 'setListingId'
+        'epid' => 'setEpid'
     ];
 
     /**
@@ -123,8 +119,7 @@ class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'compliance_type' => 'getComplianceType',
-        'listing_id' => 'getListingId'
+        'epid' => 'getEpid'
     ];
 
     /**
@@ -184,8 +179,7 @@ class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['compliance_type'] = isset($data['compliance_type']) ? $data['compliance_type'] : null;
-        $this->container['listing_id'] = isset($data['listing_id']) ? $data['listing_id'] : null;
+        $this->container['epid'] = $data['epid'] ?? null;
     }
 
     /**
@@ -213,49 +207,25 @@ class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets compliance_type
+     * Gets epid
      *
      * @return string|null
      */
-    public function getComplianceType()
+    public function getEpid()
     {
-        return $this->container['compliance_type'];
+        return $this->container['epid'];
     }
 
     /**
-     * Sets compliance_type
+     * Sets epid
      *
-     * @param string|null $compliance_type The compliance type of the listing violation to suppress is specified in this field. The compliance type for each listing violation is found in the complianceType field under the listingViolations array in a getListingViolations response. Note: At this time, the suppressViolation method is only used to suppress aspect adoption listing violations in the 'at-risk' state, so ASPECTS_ADOPTION is currently the only supported value for this field. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/compliance/types/com:ComplianceTypeEnum'>eBay API documentation</a>
+     * @param string|null $epid This field will return the eBay Product ID {ePID) of an eBay Catalog product that eBay recommends that the seller use to make their listing compliant. Note: Product Adoption is not enforced at this time. Product Adoption violations are no longer returned.
      *
      * @return self
      */
-    public function setComplianceType($compliance_type)
+    public function setEpid($epid)
     {
-        $this->container['compliance_type'] = $compliance_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets listing_id
-     *
-     * @return string|null
-     */
-    public function getListingId()
-    {
-        return $this->container['listing_id'];
-    }
-
-    /**
-     * Sets listing_id
-     *
-     * @param string|null $listing_id The unique identifier of the listing with the violation(s) is specified in this field. The unique identifier of the listing with the listing violation(s) is found in the listingId field under the listingViolations array in a getListingViolations response. Note: At this time, the suppressViolation method is only used to suppress aspect adoption listing violations in the 'at-risk' state, so the listing specified in this field should be a listing with an ASPECTS_ADOPTION violation in the 'at-risk' state.
-     *
-     * @return self
-     */
-    public function setListingId($listing_id)
-    {
-        $this->container['listing_id'] = $listing_id;
+        $this->container['epid'] = $epid;
 
         return $this;
     }
@@ -280,7 +250,7 @@ class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

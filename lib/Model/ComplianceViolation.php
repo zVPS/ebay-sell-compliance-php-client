@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,14 +29,14 @@
 namespace Ebay\Sell\Compliance\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Compliance\ObjectSerializer;
 
 /**
  * ComplianceViolation Class Doc Comment
  *
  * @category Class
  * @description This type is used by each listing violation that is returned under the &lt;strong&gt;listingViolations&lt;/strong&gt; container.
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Compliance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
@@ -45,7 +45,7 @@ use \Ebay\Sell\ObjectSerializer;
  */
 class ComplianceViolation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -199,11 +199,11 @@ class ComplianceViolation implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['compliance_type'] = isset($data['compliance_type']) ? $data['compliance_type'] : null;
-        $this->container['listing_id'] = isset($data['listing_id']) ? $data['listing_id'] : null;
-        $this->container['sku'] = isset($data['sku']) ? $data['sku'] : null;
-        $this->container['offer_id'] = isset($data['offer_id']) ? $data['offer_id'] : null;
-        $this->container['violations'] = isset($data['violations']) ? $data['violations'] : null;
+        $this->container['compliance_type'] = $data['compliance_type'] ?? null;
+        $this->container['listing_id'] = $data['listing_id'] ?? null;
+        $this->container['sku'] = $data['sku'] ?? null;
+        $this->container['offer_id'] = $data['offer_id'] ?? null;
+        $this->container['violations'] = $data['violations'] ?? null;
     }
 
     /**
@@ -370,7 +370,7 @@ class ComplianceViolation implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
