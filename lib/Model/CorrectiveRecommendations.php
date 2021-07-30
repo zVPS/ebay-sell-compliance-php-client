@@ -45,7 +45,7 @@ use \Ebay\Sell\Compliance\ObjectSerializer;
  */
 class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -184,8 +184,8 @@ class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['product_recommendation'] = $data['product_recommendation'] ?? null;
-        $this->container['aspect_recommendations'] = $data['aspect_recommendations'] ?? null;
+        $this->container['product_recommendation'] = isset($data['product_recommendation']) ? $data['product_recommendation'] : null;
+        $this->container['aspect_recommendations'] = isset($data['aspect_recommendations']) ? $data['aspect_recommendations'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class CorrectiveRecommendations implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

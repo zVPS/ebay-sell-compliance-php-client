@@ -45,7 +45,7 @@ use \Ebay\Sell\Compliance\ObjectSerializer;
  */
 class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -204,12 +204,12 @@ class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['reason_code'] = $data['reason_code'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['variation'] = $data['variation'] ?? null;
-        $this->container['violation_data'] = $data['violation_data'] ?? null;
-        $this->container['corrective_recommendations'] = $data['corrective_recommendations'] ?? null;
-        $this->container['compliance_state'] = $data['compliance_state'] ?? null;
+        $this->container['reason_code'] = isset($data['reason_code']) ? $data['reason_code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['variation'] = isset($data['variation']) ? $data['variation'] : null;
+        $this->container['violation_data'] = isset($data['violation_data']) ? $data['violation_data'] : null;
+        $this->container['corrective_recommendations'] = isset($data['corrective_recommendations']) ? $data['corrective_recommendations'] : null;
+        $this->container['compliance_state'] = isset($data['compliance_state']) ? $data['compliance_state'] : null;
     }
 
     /**
@@ -400,7 +400,7 @@ class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -45,7 +45,7 @@ use \Ebay\Sell\Compliance\ObjectSerializer;
  */
 class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -184,8 +184,8 @@ class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['compliance_type'] = $data['compliance_type'] ?? null;
-        $this->container['listing_id'] = $data['listing_id'] ?? null;
+        $this->container['compliance_type'] = isset($data['compliance_type']) ? $data['compliance_type'] : null;
+        $this->container['listing_id'] = isset($data['listing_id']) ? $data['listing_id'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class SuppressViolationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

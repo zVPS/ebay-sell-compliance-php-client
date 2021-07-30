@@ -45,7 +45,7 @@ use \Ebay\Sell\Compliance\ObjectSerializer;
  */
 class ComplianceViolation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -199,11 +199,11 @@ class ComplianceViolation implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['compliance_type'] = $data['compliance_type'] ?? null;
-        $this->container['listing_id'] = $data['listing_id'] ?? null;
-        $this->container['sku'] = $data['sku'] ?? null;
-        $this->container['offer_id'] = $data['offer_id'] ?? null;
-        $this->container['violations'] = $data['violations'] ?? null;
+        $this->container['compliance_type'] = isset($data['compliance_type']) ? $data['compliance_type'] : null;
+        $this->container['listing_id'] = isset($data['listing_id']) ? $data['listing_id'] : null;
+        $this->container['sku'] = isset($data['sku']) ? $data['sku'] : null;
+        $this->container['offer_id'] = isset($data['offer_id']) ? $data['offer_id'] : null;
+        $this->container['violations'] = isset($data['violations']) ? $data['violations'] : null;
     }
 
     /**
@@ -370,7 +370,7 @@ class ComplianceViolation implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

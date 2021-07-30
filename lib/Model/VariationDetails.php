@@ -45,7 +45,7 @@ use \Ebay\Sell\Compliance\ObjectSerializer;
  */
 class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -184,8 +184,8 @@ class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['sku'] = $data['sku'] ?? null;
-        $this->container['variation_aspects'] = $data['variation_aspects'] ?? null;
+        $this->container['sku'] = isset($data['sku']) ? $data['sku'] : null;
+        $this->container['variation_aspects'] = isset($data['variation_aspects']) ? $data['variation_aspects'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class VariationDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -45,7 +45,7 @@ use \Ebay\Sell\Compliance\ObjectSerializer;
  */
 class PagedComplianceViolationCollection implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -209,13 +209,13 @@ class PagedComplianceViolationCollection implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['offset'] = $data['offset'] ?? null;
-        $this->container['href'] = $data['href'] ?? null;
-        $this->container['total'] = $data['total'] ?? null;
-        $this->container['next'] = $data['next'] ?? null;
-        $this->container['prev'] = $data['prev'] ?? null;
-        $this->container['limit'] = $data['limit'] ?? null;
-        $this->container['listing_violations'] = $data['listing_violations'] ?? null;
+        $this->container['offset'] = isset($data['offset']) ? $data['offset'] : null;
+        $this->container['href'] = isset($data['href']) ? $data['href'] : null;
+        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        $this->container['next'] = isset($data['next']) ? $data['next'] : null;
+        $this->container['prev'] = isset($data['prev']) ? $data['prev'] : null;
+        $this->container['limit'] = isset($data['limit']) ? $data['limit'] : null;
+        $this->container['listing_violations'] = isset($data['listing_violations']) ? $data['listing_violations'] : null;
     }
 
     /**
@@ -430,7 +430,7 @@ class PagedComplianceViolationCollection implements ModelInterface, ArrayAccess,
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

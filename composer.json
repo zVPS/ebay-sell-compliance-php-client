@@ -1,5 +1,5 @@
 {
-    "name": "zvps/ebay-sell-compliance-php-client",
+    "name": "zvps\/ebay-sell-compliance-php-client",
     "version": "5.0.0",
     "description": "Service for providing information to sellers about their listings being non-compliant, or at risk for becoming non-compliant, against eBay listing policies.",
     "keywords": [
@@ -11,29 +11,33 @@
         "rest",
         "api"
     ],
-    "homepage": "https://openapi-generator.tech",
+    "homepage": "https:\/\/openapi-generator.tech",
     "license": "unlicense",
     "authors": [
         {
             "name": "OpenAPI-Generator contributors",
-            "homepage": "https://openapi-generator.tech"
+            "homepage": "https:\/\/openapi-generator.tech"
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": ">=5.6",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp\/guzzle": "^6.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0 || ^9.0",
-        "friendsofphp/php-cs-fixer": "^2.12"
+        "phpunit\/phpunit": "^8.0 || ^9.0",
+        "friendsofphp\/php-cs-fixer": "^2.12"
     },
     "autoload": {
-        "psr-4": { "Ebay\\Sell\\Compliance\\" : "lib/" }
+        "psr-4": {
+            "Ebay\\Sell\\Compliance\\": "lib\/"
+        }
     },
     "autoload-dev": {
-        "psr-4": { "Ebay\\Sell\\Compliance\\Test\\" : "test/" }
+        "psr-4": {
+            "Ebay\\Sell\\Compliance\\Test\\": "test\/"
+        }
     }
 }

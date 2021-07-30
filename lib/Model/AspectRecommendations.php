@@ -45,7 +45,7 @@ use \Ebay\Sell\Compliance\ObjectSerializer;
  */
 class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -184,8 +184,8 @@ class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['localized_aspect_name'] = $data['localized_aspect_name'] ?? null;
-        $this->container['suggested_values'] = $data['suggested_values'] ?? null;
+        $this->container['localized_aspect_name'] = isset($data['localized_aspect_name']) ? $data['localized_aspect_name'] : null;
+        $this->container['suggested_values'] = isset($data['suggested_values']) ? $data['suggested_values'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class AspectRecommendations implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**
